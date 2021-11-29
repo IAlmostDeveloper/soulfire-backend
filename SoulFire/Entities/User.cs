@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace SoulFire.Entities
 {
     public class User
     {
+        [JsonIgnore]
         public Guid Id { get; set; }
 
         [MaxLength(25)]

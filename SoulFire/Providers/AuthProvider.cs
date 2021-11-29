@@ -1,4 +1,5 @@
 ﻿using SoulFire.Entities;
+using SoulFire.Interfaces;
 using System.Linq;
 using System.Threading.Tasks;
 

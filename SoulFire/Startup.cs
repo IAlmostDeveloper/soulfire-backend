@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using SoulFire.Interfaces;
 using SoulFire.Providers;
 using System.Text;
 
@@ -86,6 +87,8 @@ namespace SoulFire
             services.AddDbContext<Context>(options => options.UseSqlServer(Configuration["ConnectionStrings:SqlServerConnection"]));
 
             services.AddScoped<IAuthProvider, AuthProvider>();
+            services.AddScoped<IAchievementProvider, AchievementProvider>();
+            services.AddScoped<IUserProvider, UserProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

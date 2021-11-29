@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace SoulFire.Providers
+namespace SoulFire.Interfaces
 {
     public interface IAchievementProvider
     {

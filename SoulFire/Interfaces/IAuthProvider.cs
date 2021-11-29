@@ -1,7 +1,7 @@
 ﻿using SoulFire.Entities;
 using System.Threading.Tasks;
 
-namespace SoulFire.Providers
+namespace SoulFire.Interfaces
 {
     public interface IAuthProvider
     {
