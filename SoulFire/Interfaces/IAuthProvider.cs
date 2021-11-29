@@ -6,5 +6,6 @@ namespace SoulFire.Providers
     public interface IAuthProvider
     {
         Task<User> AuthenticateUser(User login);
+        Task<User> RegisterUser(User user);
     }
 }

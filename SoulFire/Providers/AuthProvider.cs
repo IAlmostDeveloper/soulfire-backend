@@ -1,6 +1,4 @@
 ﻿using SoulFire.Entities;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,16 +6,25 @@ namespace SoulFire.Providers
 {
     public class AuthProvider : IAuthProvider
     {
-        public async Task<User> AuthenticateUser(User login)
-        {
-            User user = null;
+        private readonly Context context;
 
-            //Validate the User Credentials      
-            //Demo Purpose, I have Passed HardCoded User Information      
-            if (login.Username == "Jay")
-            {
-                user = new User { Username = "Jay", Password = "123456" };
-            }
+        public AuthProvider(Context context)
+        {
+            this.context = context;
+        }
+
+        public async Task<User> AuthenticateUser(User user)
+        {
+            var userCheck = context.Users.FirstOrDefault(u => u.Username == user.Username);
+            if (userCheck == null)
+                return null;
+            return userCheck;
+        }
+
+        public async Task<User> RegisterUser(User user)
+        {
+            context.Users.Add(user);
+            await context.SaveChangesAsync();
             return user;
         }
     }

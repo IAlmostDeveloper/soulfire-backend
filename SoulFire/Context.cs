@@ -12,7 +12,7 @@ namespace SoulFire
         public Context(DbContextOptions<Context> options)
             : base(options)
         {
-            
+
         }
     }
 }
