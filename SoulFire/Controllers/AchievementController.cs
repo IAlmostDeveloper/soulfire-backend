@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SoulFire.Entities;
+using SoulFire.Providers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,29 +15,21 @@ namespace SoulFire.Controllers
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class AchievementController : ControllerBase
     {
-        private readonly Context context;
+        private readonly IAchievementProvider achievementProvider;
 
-        public AchievementController(Context context)
+        public AchievementController(IAchievementProvider achievementProvider)
         {
-            this.context = context;
+            this.achievementProvider = achievementProvider;
         }
 
         [HttpGet]
         [Route("{id}")]
-        public Achievement GetAchievement(Guid id) => context.Achievements.FirstOrDefault(a => a.Id == id);
+        public Achievement GetAchievement(Guid id) => achievementProvider.GetAchievement(id);
 
         [HttpGet]
-        public IEnumerable<Achievement> GetAllAchievements()
-        {
-            return context.Achievements;
-        }
+        public IEnumerable<Achievement> GetAllAchievements() => achievementProvider.GetAllAchievments();
 
         [HttpPost]
-        public async Task<Achievement> AddAchievement([FromBody] Achievement achievement)
-        {
-            context.Add(achievement);
-            await context.SaveChangesAsync();
-            return achievement;
-        }
+        public async Task<Achievement> AddAchievement([FromBody] Achievement achievement) => await achievementProvider.AddAchievement(achievement);
     }
 }
