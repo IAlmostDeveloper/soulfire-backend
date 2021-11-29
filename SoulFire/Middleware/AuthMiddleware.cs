@@ -23,13 +23,6 @@ namespace SoulFire.Middleware
             string authHeader = httpContext.Request.Headers["Authorization"];
             if (authHeader != null)
             {
-                //string auth = authHeader.Split(new char[] { ' ' })[1];
-                //Encoding encoding = Encoding.GetEncoding("UTF-8");
-                //var usernameAndPassword = encoding.GetString(Convert.FromBase64String(auth));
-                //string username = usernameAndPassword.Split(new char[] { ':' })[0];
-                //string password = usernameAndPassword.Split(new char[] { ':' })[1];
-
-
                 var token = authHeader;
                 var handler = new JwtSecurityTokenHandler();
                 var jsonToken = handler.ReadJwtToken(token);
