@@ -32,6 +32,7 @@ namespace SoulFire
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddCors(options => options.AddPolicy("DefaultPolicy", builder => builder.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader()));
             // Enable Swagger   
             services.AddSwaggerGen(swagger =>
             {
@@ -88,6 +89,7 @@ namespace SoulFire
                 };
             });
 
+
             services.AddDbContext<Context>(options => options.UseSqlServer(Configuration["ConnectionStrings:SqlServerConnection"]));
 
             services.AddScoped<IAuthProvider, AuthProvider>();
@@ -100,6 +102,7 @@ namespace SoulFire
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors("DefaultPolicy");
 
             app.UseHttpsRedirection();
 

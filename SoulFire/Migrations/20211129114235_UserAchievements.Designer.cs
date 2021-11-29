@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SoulFire;
 
 namespace SoulFire.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20211129114235_UserAchievements")]
+    partial class UserAchievements
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,7 +21,7 @@ namespace SoulFire.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("SoulFire.Entities.Achievement", b =>
+            modelBuilder.Entity("SoulFire.Domain.Entities.Achievement", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -38,7 +40,7 @@ namespace SoulFire.Migrations
                     b.ToTable("Achievements");
                 });
 
-            modelBuilder.Entity("SoulFire.Entities.User", b =>
+            modelBuilder.Entity("SoulFire.Domain.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -79,18 +81,18 @@ namespace SoulFire.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserAchievements");
+                    b.ToTable("UserAchievement");
                 });
 
             modelBuilder.Entity("SoulFire.Entities.UserAchievement", b =>
                 {
-                    b.HasOne("SoulFire.Entities.Achievement", "Achievement")
+                    b.HasOne("SoulFire.Domain.Entities.Achievement", "Achievement")
                         .WithMany()
                         .HasForeignKey("AchievementId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SoulFire.Entities.User", "User")
+                    b.HasOne("SoulFire.Domain.Entities.User", "User")
                         .WithMany("Achievements")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

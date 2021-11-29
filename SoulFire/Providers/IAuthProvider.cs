@@ -1,7 +1,4 @@
-﻿using SoulFire.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using SoulFire.Entities;
 using System.Threading.Tasks;
 
 namespace SoulFire.Providers

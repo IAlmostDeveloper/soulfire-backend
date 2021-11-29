@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using SoulFire.Domain.Entities;
+using SoulFire.Entities;
 using SoulFire.Providers;
 using System;
 using System.Collections.Generic;

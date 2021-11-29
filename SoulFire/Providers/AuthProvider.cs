@@ -1,4 +1,4 @@
-﻿using SoulFire.Domain.Entities;
+﻿using SoulFire.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ namespace SoulFire.Providers
 {
     public class AuthProvider : IAuthProvider
     {
-        async Task<User> IAuthProvider.AuthenticateUser(User login)
+        public async Task<User> AuthenticateUser(User login)
         {
             User user = null;
 

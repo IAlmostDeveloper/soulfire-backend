@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SoulFire.Domain.Entities;
+using SoulFire.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +20,13 @@ namespace SoulFire.Controllers
         }
 
         [HttpGet]
+        [Route("{id}")]
+        public Achievement GetAchievement(Guid id) => context.Achievements.FirstOrDefault(a => a.Id == id);
+
+        [HttpGet]
         public IEnumerable<Achievement> GetAllAchievements()
         {
-            return this.context.Achievements;
+            return context.Achievements;
         }
 
         [HttpPost]
