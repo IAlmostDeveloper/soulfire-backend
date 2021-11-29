@@ -12,5 +12,9 @@
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.14.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SoulFire.Domain\SoulFire.Domain.csproj" />
+  </ItemGroup>
+
 
 </Project>

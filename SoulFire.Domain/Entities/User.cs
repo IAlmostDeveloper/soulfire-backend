@@ -4,16 +4,14 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SoulFire.Model
-{
-    /// <summary>  
-    /// Login Model 
-    /// </summary>  
-    public class LoginModel
+namespace SoulFire.Domain.Entities
+{ 
+    public class User
     {
-        [Required]
-        public string UserName { get; set; }
-        [Required]
+        public Guid Id { get; set; }
+        
+        [MaxLength(25)]
+        public string Username { get; set; }
         public string Password { get; set; }
     }
 }

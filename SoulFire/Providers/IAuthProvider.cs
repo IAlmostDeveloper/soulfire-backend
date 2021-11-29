@@ -1,4 +1,4 @@
-﻿using SoulFire.Model;
+﻿using SoulFire.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +8,6 @@ namespace SoulFire.Providers
 {
     public interface IAuthProvider
     {
-        Task<LoginModel> AuthenticateUser(LoginModel login);
+        Task<User> AuthenticateUser(User login);
     }
 }
