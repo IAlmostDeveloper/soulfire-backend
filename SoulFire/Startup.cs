@@ -89,6 +89,7 @@ namespace SoulFire
             services.AddScoped<IAuthProvider, AuthProvider>();
             services.AddScoped<IAchievementProvider, AchievementProvider>();
             services.AddScoped<IUserProvider, UserProvider>();
+            services.AddScoped<IOpinionProvider, OpinionProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -100,7 +101,7 @@ namespace SoulFire
             }
             app.UseCors("DefaultPolicy");
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 

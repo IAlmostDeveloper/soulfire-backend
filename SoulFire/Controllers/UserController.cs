@@ -25,9 +25,9 @@ namespace SoulFire.Controllers
 
         [HttpGet]
         [Route("{userId}/achievements")]
-        public IEnumerable<UserAchievement> GetUserAchievements(Guid userId)
+        public ActionResult GetUserAchievements(Guid userId)
         {
-            return userProvider.GetUserAchievements(userId);
+            return Ok(new { status = 200, userAchievements = userProvider.GetUserAchievements(userId) });
         }
 
         [HttpPost]

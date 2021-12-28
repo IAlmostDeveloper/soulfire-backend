@@ -26,7 +26,7 @@ namespace SoulFire.Controllers
         public Achievement GetAchievement(Guid id) => achievementProvider.GetAchievement(id);
 
         [HttpGet]
-        public IEnumerable<Achievement> GetAllAchievements() => achievementProvider.GetAllAchievments();
+        public ActionResult GetAllAchievements() => Ok(new { status_code = 200, achievements = achievementProvider.GetAllAchievments() });
 
         [HttpPost]
         public async Task<Achievement> AddAchievement([FromBody] Achievement achievement) => await achievementProvider.AddAchievement(achievement);

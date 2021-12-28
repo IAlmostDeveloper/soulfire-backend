@@ -54,7 +54,7 @@ namespace SoulFire.Controllers
             if (user != null)
             {
                 var tokenString = GenerateJSONWebToken(user);
-                response = Ok(new { Token = tokenString, Message = "Success" });
+                response = Ok(new { Token = tokenString, Message = "Success", UserId = user.Id, Username = user.Username });
             }
             return response;
         }
