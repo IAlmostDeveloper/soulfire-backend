@@ -16,29 +16,34 @@ namespace SoulFire.Controllers
     {
         private readonly IOpinionProvider opinionProvider;
 
+        public OpinionController(IOpinionProvider opinionProvider)
+        {
+            this.opinionProvider = opinionProvider;
+        }
+
         [HttpGet]
-        [Route("/thoughtswritingforms")]
+        [Route("thoughtswritingforms")]
         public ActionResult GetThoughtsWritingForms()
         {
             return Ok(new { status = 200, content = opinionProvider.GetThoughtsWritingForms() });
         }
 
         [HttpGet]
-        [Route("/thoughtssimpleforms")]
+        [Route("thoughtssimpleforms")]
         public ActionResult GetThoughtsSimpleForms()
         {
             return Ok(new { status = 200, content = opinionProvider.GetThoughtsSimpleForms() });
         }
 
         [HttpGet]
-        [Route("/middleopinions")]
+        [Route("middleopinions")]
         public ActionResult GetMiddleOpinions()
         {
             return Ok(new { status = 200, content = opinionProvider.GetMiddleOpinions() });
         }
 
         [HttpGet]
-        [Route("/deepopinions")]
+        [Route("deepopinions")]
         public ActionResult GetDeepOpinions()
         {
             return Ok(new { status = 200, content = opinionProvider.GetDeepOpinions()});

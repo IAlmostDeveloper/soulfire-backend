@@ -12,6 +12,8 @@ namespace SoulFire
         public virtual DbSet<ThoughtsSimpleForm> ThoughtsSimpleForms { get; set; }
         public virtual DbSet<MiddleOpinion> MiddleOpinions { get; set; }
         public virtual DbSet<DeepOpinion> DeepOpinions { get; set; }
+        public virtual DbSet<UserAnswer> UserAnswers { get; set; }
+
 
 
         public Context(DbContextOptions<Context> options)

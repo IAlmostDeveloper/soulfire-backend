@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SoulFire.Interfaces
 {
-    interface IOpinionProvider
+    public interface IOpinionProvider
     {
         public IEnumerable<ThoughtsWritingForm> GetThoughtsWritingForms();
 

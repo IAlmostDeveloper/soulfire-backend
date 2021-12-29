@@ -36,5 +36,26 @@ namespace SoulFire.Controllers
         {
             return userProvider.AddUserAchievement(achievementId, userId);
         }
+
+        [HttpGet]
+        [Route("{userId}/answers")]
+        public ActionResult GetUserAnswers(Guid userId)
+        {
+            return Ok(new { status = 200, userAnswers = userProvider.GetUserAnswers(userId)});
+        }
+
+        [HttpGet]
+        [Route("{userId}/answers/{answerId}")]
+        public ActionResult GetUserAnswer(Guid answerId)
+        {
+            return Ok(new { status = 200, userAnswer = userProvider.GetUserAnswer(answerId) });
+        }
+
+        [HttpPost]
+        [Route("{userId}/answers")]
+        public Task<UserAnswer> AddUserAnswer(Guid userId)
+        {
+            return userProvider.AddUserAnswer(userId, "", "");
+        }
     }
 }

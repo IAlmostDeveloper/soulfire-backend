@@ -43,5 +43,34 @@ namespace SoulFire.Providers
             await context.SaveChangesAsync();
             return userAchievement;
         }
+
+        public IEnumerable<UserAnswer> GetAllAnswers()
+        {
+            return context.UserAnswers;
+        }
+
+        public IEnumerable<UserAnswer> GetUserAnswers(Guid userId)
+        {
+            return context.UserAnswers.Where(x => x.UserId == userId);
+        }
+
+        public UserAnswer GetUserAnswer(Guid answerId)
+        {
+            return context.UserAnswers.FirstOrDefault(x => x.Id == answerId);
+        }
+
+        public async Task<UserAnswer> AddUserAnswer(Guid userId, string question, string answer)
+        {
+            var userAnswer = new UserAnswer
+            {
+                UserId = userId,
+                Question = question,
+                Answer = answer
+            };
+
+            context.UserAnswers.Add(userAnswer);
+            await context.SaveChangesAsync();
+            return userAnswer;
+        }
     }
 }
