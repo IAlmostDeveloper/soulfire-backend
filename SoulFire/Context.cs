@@ -13,6 +13,9 @@ namespace SoulFire
         public virtual DbSet<MiddleOpinion> MiddleOpinions { get; set; }
         public virtual DbSet<DeepOpinion> DeepOpinions { get; set; }
         public virtual DbSet<UserAnswer> UserAnswers { get; set; }
+        public virtual DbSet<UserAutoThought> UserAutoThoughts { get; set; }
+        public virtual DbSet<UserMiddleThought> UserMiddleThoughts { get; set; }
+        public virtual DbSet<UserDeepThought> UserDeepThoughts { get; set; }
 
 
 

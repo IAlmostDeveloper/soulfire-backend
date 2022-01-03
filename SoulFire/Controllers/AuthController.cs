@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace SoulFire.Controllers
 {
@@ -61,10 +62,24 @@ namespace SoulFire.Controllers
 
         [AllowAnonymous]
         [HttpPost(nameof(Register))]
-        public async Task<IActionResult> Register([FromBody] User data)
+        public async Task<IActionResult> Register([FromBody] RegisterRequest data)
         {
+
+            User userData = new User { Id= new Guid(), Username = data.Username, Password = data.Password, CharacterType = data.CharacterType };
+            userData.AutoThoughts = new List<UserAutoThought>();
+            userData.MiddleThoughts = new List<UserMiddleThought>();
+            userData.DeepThoughts = new List<UserDeepThought>();
+
+            userData.AutoThoughts.AddRange(from string? autoThought in data.AutoThoughts
+                                           select new UserAutoThought { Id = new Guid(), UserId = userData.Id, Content = autoThought });
+            userData.MiddleThoughts.AddRange(from string? middleThought in data.MiddleThoughts
+                                             select new UserMiddleThought { Id = new Guid(), UserId = userData.Id, Content = middleThought });
+            userData.DeepThoughts.AddRange(from string? deepThought in data.DeepThoughts
+                                           select new UserDeepThought { Id = new Guid(), UserId = userData.Id, Content = deepThought });
+
+
             IActionResult response = BadRequest();
-            var user = await authProvider.RegisterUser(data);
+            var user = await authProvider.RegisterUser(userData);
             if (user != null)
             {
                 response = Ok(user);

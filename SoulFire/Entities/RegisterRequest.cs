@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 
 namespace SoulFire.Entities
 {
-    public class User
+    public class RegisterRequest
     {
         [JsonIgnore]
         public Guid Id { get; set; }
@@ -16,9 +18,8 @@ namespace SoulFire.Entities
 
         public string CharacterType { get; set; }
 
-        public List<UserAchievement>? Achievements { get; set; }
-        public List<UserAutoThought>? AutoThoughts { get; set; }
-        public List<UserMiddleThought>? MiddleThoughts { get; set; }
-        public List<UserDeepThought>? DeepThoughts { get; set; }
+        public List<string>? AutoThoughts { get; set; }
+        public List<string>? MiddleThoughts { get; set; }
+        public List<string>? DeepThoughts { get; set; }
     }
 }
