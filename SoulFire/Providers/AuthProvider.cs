@@ -14,9 +14,9 @@ namespace SoulFire.Providers
             this.context = context;
         }
 
-        public async Task<User> AuthenticateUser(User user)
+        public async Task<User> AuthenticateUser(AuthRequest user)
         {
-            var userCheck = context.Users.FirstOrDefault(u => u.Username == user.Username);
+            var userCheck = context.Users.FirstOrDefault(u => u.Username == user.Username && u.Password == user.Password);
             if (userCheck == null)
                 return null;
             return userCheck;

@@ -48,7 +48,7 @@ namespace SoulFire.Controllers
 
         [AllowAnonymous]
         [HttpPost(nameof(Login))]
-        public async Task<IActionResult> Login([FromBody] User data)
+        public async Task<IActionResult> Login([FromBody] AuthRequest data)
         {
             IActionResult response = Unauthorized();
             var user = await authProvider.AuthenticateUser(data);
