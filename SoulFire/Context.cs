@@ -16,6 +16,7 @@ namespace SoulFire
         public virtual DbSet<UserAutoThought> UserAutoThoughts { get; set; }
         public virtual DbSet<UserMiddleThought> UserMiddleThoughts { get; set; }
         public virtual DbSet<UserDeepThought> UserDeepThoughts { get; set; }
+        public virtual DbSet<DiaryNote> DiaryNotes { get; set; }
 
 
 
