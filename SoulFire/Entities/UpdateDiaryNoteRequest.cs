@@ -7,5 +7,6 @@ namespace SoulFire.Entities
 {
     public class UpdateDiaryNoteRequest
     {
+        public string Content { get; set; }
     }
 }
