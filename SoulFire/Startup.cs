@@ -90,6 +90,7 @@ namespace SoulFire
             services.AddScoped<IUserProvider, UserProvider>();
             services.AddScoped<IOpinionProvider, OpinionProvider>();
             services.AddScoped<IDiaryProvider, DiaryProvider>();
+            services.AddScoped<IPresetsProvider, PresetsProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -20,7 +20,7 @@ namespace SoulFire.Providers
         public IEnumerable<UserAchievement> GetUserAchievements(Guid UserId)
         {
             var userAchievements = context.UserAchievements
-                .Where(ua => ua.UserId == UserId);
+                .Where(ua => ua.UserId == UserId).OrderByDescending(x => x.UpdatedDate);
 
             return userAchievements;
         }
