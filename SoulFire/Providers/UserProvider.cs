@@ -20,25 +20,13 @@ namespace SoulFire.Providers
         public IEnumerable<UserAchievement> GetUserAchievements(Guid UserId)
         {
             var userAchievements = context.UserAchievements
-                .Include(x => x.User)
-                .Include(x => x.Achievement)
                 .Where(ua => ua.UserId == UserId);
-
-            //foreach (var userAchievement in userAchievements)
-            //{
-            //    userAchievement.Achievement = context.Achievements.FirstOrDefault(a => a.Id == userAchievement.AchievementId);
-            //}
 
             return userAchievements;
         }
 
-        public async Task<UserAchievement> AddUserAchievement(Guid achievementId, Guid userId)
+        public async Task<UserAchievement> AddUserAchievement(UserAchievement userAchievement)
         {
-            var userAchievement = new UserAchievement
-            {
-                AchievementId = achievementId,
-                UserId = userId,
-            };
             context.UserAchievements.Add(userAchievement);
             await context.SaveChangesAsync();
             return userAchievement;
@@ -71,6 +59,26 @@ namespace SoulFire.Providers
             context.UserAnswers.Add(userAnswer);
             await context.SaveChangesAsync();
             return userAnswer;
+        }
+
+        public async  Task<UserAchievement> UpdateUserAchievement(Guid achievementId, UserAchievement userAchievement)
+        {
+            UserAchievement ua = context.UserAchievements.FirstOrDefault(x => x.Id == achievementId);
+            ua.Title = userAchievement.Title;
+            ua.Content = userAchievement.Content;
+            ua.Description = userAchievement.Description;
+
+            await context.SaveChangesAsync();
+            return ua;
+        }
+
+        public async Task<UserAchievement> DeleteUserAchievement(Guid achievementId)
+        {
+            UserAchievement ua = context.UserAchievements.FirstOrDefault(x => x.Id == achievementId);
+            context.UserAchievements.Remove(ua);
+            await context.SaveChangesAsync();
+
+            return ua;
         }
     }
 }

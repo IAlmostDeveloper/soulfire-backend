@@ -24,24 +24,40 @@ namespace SoulFire.Controllers
         }
 
         [HttpGet]
-        [Route("{userId}/achievements")]
+        [Route("achievements/{userId}")]
         public ActionResult GetUserAchievements(Guid userId)
         {
             return Ok(new { status = 200, userAchievements = userProvider.GetUserAchievements(userId) });
         }
 
         [HttpPost]
-        [Route("{userId}/achievements/{achievementId}")]
-        public Task<UserAchievement> AddUserAchievement(Guid achievementId, Guid userId)
+        [Route("achievements")]
+        public ActionResult AddUserAchievement([FromBody] UserAchievement userAchievement)
         {
-            return userProvider.AddUserAchievement(achievementId, userId);
+            userAchievement.Id = new Guid();
+            return Ok(new { status = 200, result = userProvider.AddUserAchievement(userAchievement).Result});
         }
+
+        [HttpPatch]
+        [Route("achievements/{achievementId}")]
+        public ActionResult UpdateUserAchievement(Guid achievementId, [FromBody] UserAchievement userAchievement)
+        {
+            return Ok(new { status = 200, result = userProvider.UpdateUserAchievement(achievementId, userAchievement).Result });
+        }
+
+        [HttpDelete]
+        [Route("achievements/{achievementId}")]
+        public ActionResult DeleteUserAchievement(Guid achievementId)
+        {
+            return Ok(new { status = 200, result = userProvider.DeleteUserAchievement(achievementId).Result});
+        }
+
 
         [HttpGet]
         [Route("{userId}/answers")]
         public ActionResult GetUserAnswers(Guid userId)
         {
-            return Ok(new { status = 200, userAnswers = userProvider.GetUserAnswers(userId)});
+            return Ok(new { status = 200, userAnswers = userProvider.GetUserAnswers(userId) });
         }
 
         [HttpGet]

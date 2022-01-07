@@ -10,7 +10,7 @@ namespace SoulFire.Interfaces
     {
         IEnumerable<DiaryNote> GetUserDiaryNotes(Guid userId);
         Task<DiaryNote> AddDiaryNote(DiaryNote diaryNote);
-        Task<DiaryNote> UpdateDiaryNote(Guid noteId, string content);
+        Task<DiaryNote> UpdateDiaryNote(Guid noteId, UpdateDiaryNoteRequest request);
         Task<DiaryNote> DeleteDiaryNote(Guid noteId);
     }
 }

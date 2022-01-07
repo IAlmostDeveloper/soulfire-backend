@@ -87,9 +87,9 @@ namespace SoulFire
             services.AddDbContext<Context>(options => options.UseSqlServer(Configuration["ConnectionStrings:SqlServerConnection"]));
 
             services.AddScoped<IAuthProvider, AuthProvider>();
-            services.AddScoped<IAchievementProvider, AchievementProvider>();
             services.AddScoped<IUserProvider, UserProvider>();
             services.AddScoped<IOpinionProvider, OpinionProvider>();
+            services.AddScoped<IDiaryProvider, DiaryProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

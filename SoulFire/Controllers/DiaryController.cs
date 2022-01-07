@@ -32,21 +32,21 @@ namespace SoulFire.Controllers
         [HttpPost]
         public ActionResult AddDiaryNote([FromBody] DiaryNote diaryNote)
         {
-            return Ok(new { status = 200, content = diaryProvider.AddDiaryNote(diaryNote) });
+            return Ok(new { status = 200, content = diaryProvider.AddDiaryNote(diaryNote).Result });
         }
 
         [HttpPatch]
         [Route("{noteId}")]
         public ActionResult UpdateDiaryNote(Guid noteId, [FromBody] UpdateDiaryNoteRequest request )
         {
-            return Ok(new { status = 200, content = diaryProvider.UpdateDiaryNote(noteId, request.Content) });
+            return Ok(new { status = 200, content = diaryProvider.UpdateDiaryNote(noteId, request).Result });
         }
 
         [HttpDelete]
         [Route("{noteId}")]
         public ActionResult DeleteDiaryNote(Guid noteId)
         {
-            return Ok(new { status = 200, content = diaryProvider.DeleteDiaryNote(noteId) });
+            return Ok(new { status = 200, content = diaryProvider.DeleteDiaryNote(noteId).Result });
         }
 
     }

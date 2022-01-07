@@ -8,13 +8,10 @@ namespace SoulFire.Entities
     {
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
-        public Guid AchievementId { get; set; }
-        public DateTime Date { get; set; }
+        public string UpdatedDate { get; set; }
 
-        [JsonIgnore]
-        public virtual User User { get; set; }
-
-        [ForeignKey("AchievementId")]
-        public virtual Achievement Achievement { get; set; }
+        public string Title { get; set; }
+        public string Content { get; set; }
+        public string Description { get; set; }
     }
 }

@@ -10,8 +10,5 @@ namespace SoulFire.Entities
         public string Title { get; set; }
         public string Content { get; set; }
         public string UpdatedDate { get; set; }
-
-        [JsonIgnore]
-        public virtual User User { get; set; }
     }
 }
