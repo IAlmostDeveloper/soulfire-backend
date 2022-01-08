@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SoulFire;
 
 namespace SoulFire.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20220108170347_AddSelfBeliefs2")]
+    partial class AddSelfBeliefs2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -129,11 +131,14 @@ namespace SoulFire.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid>("BeliefId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("SelfBeliefId")
+                    b.Property<Guid?>("SelfBeliefId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Title")
@@ -328,10 +333,8 @@ namespace SoulFire.Migrations
             modelBuilder.Entity("SoulFire.Entities.SelfBeliefProof", b =>
                 {
                     b.HasOne("SoulFire.Entities.SelfBelief", null)
-                        .WithMany("SelfBeliefProofs")
-                        .HasForeignKey("SelfBeliefId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("Proofs")
+                        .HasForeignKey("SelfBeliefId");
                 });
 
             modelBuilder.Entity("SoulFire.Entities.UserAchievement", b =>

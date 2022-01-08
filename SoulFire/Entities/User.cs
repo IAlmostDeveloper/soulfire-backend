@@ -16,9 +16,9 @@ namespace SoulFire.Entities
 
         public string CharacterType { get; set; }
 
-        public List<UserAchievement>? Achievements { get; set; }
-        public List<UserAutoThought>? AutoThoughts { get; set; }
-        public List<UserMiddleThought>? MiddleThoughts { get; set; }
-        public List<UserDeepThought>? DeepThoughts { get; set; }
+        public virtual List<UserAchievement>? Achievements { get; set; }
+        public virtual List<UserAutoThought>? AutoThoughts { get; set; }
+        public virtual List<UserMiddleThought>? MiddleThoughts { get; set; }
+        public virtual List<UserDeepThought>? DeepThoughts { get; set; }
     }
 }

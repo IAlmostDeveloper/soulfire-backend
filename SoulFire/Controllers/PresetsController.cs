@@ -28,6 +28,12 @@ namespace SoulFire.Controllers
             return Ok(new { status = 200, content = presetsProvider.GetUserPresets(userId) });
         }
 
+        [HttpGet]
+        public ActionResult GetAllPresets(Guid userId)
+        {
+            return Ok(new { status = 200, content = presetsProvider.GetAllPresets() });
+        }
+
         [HttpPost]
         public ActionResult AddUserPreset([FromBody] Preset preset)
         {

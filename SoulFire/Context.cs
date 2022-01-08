@@ -17,13 +17,21 @@ namespace SoulFire
         public virtual DbSet<UserDeepThought> UserDeepThoughts { get; set; }
         public virtual DbSet<DiaryNote> DiaryNotes { get; set; }
         public virtual DbSet<Preset> Presets { get; set; }
+        public virtual DbSet<SelfBelief> SelfBeliefs { get; set; }
+        public virtual DbSet<SelfBeliefProof> SelfBeliefProofs { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder
+                .Entity<SelfBelief>().HasMany(x => x.SelfBeliefProofs).WithOne().HasForeignKey(x => x.SelfBeliefId);
 
 
+        }
 
         public Context(DbContextOptions<Context> options)
             : base(options)
         {
-
+            
         }
     }
 }

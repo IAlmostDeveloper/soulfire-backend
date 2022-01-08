@@ -32,6 +32,11 @@ namespace SoulFire.Providers
             return pr;
         }
 
+        public IEnumerable<Preset> GetAllPresets()
+        {
+            return context.Presets;
+        }
+
         public IEnumerable<Preset> GetUserPresets(Guid userId)
         {
             return context.Presets.Where(x => x.UserId == userId).OrderByDescending(x => x.UpdatedDate);

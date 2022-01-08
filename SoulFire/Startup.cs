@@ -84,13 +84,14 @@ namespace SoulFire
             });
 
 
-            services.AddDbContext<Context>(options => options.UseSqlServer(Configuration["ConnectionStrings:SqlServerConnection"]));
+            services.AddDbContext<Context>(options => options.UseLazyLoadingProxies().UseSqlServer(Configuration["ConnectionStrings:SqlServerConnection"]));
 
             services.AddScoped<IAuthProvider, AuthProvider>();
             services.AddScoped<IUserProvider, UserProvider>();
             services.AddScoped<IOpinionProvider, OpinionProvider>();
             services.AddScoped<IDiaryProvider, DiaryProvider>();
             services.AddScoped<IPresetsProvider, PresetsProvider>();
+            services.AddScoped<ISelfBeliefProvider, SelfBeliefProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
