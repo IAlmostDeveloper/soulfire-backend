@@ -26,7 +26,7 @@ namespace SoulFire
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddCors(options => options.AddPolicy("DefaultPolicy", builder => builder.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader()));
+            services.AddCors(options => options.AddPolicy("DefaultPolicy", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
             // Enable Swagger   
             services.AddSwaggerGen(swagger =>
             {

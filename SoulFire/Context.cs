@@ -23,8 +23,15 @@ namespace SoulFire
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .Entity<SelfBelief>().HasMany(x => x.SelfBeliefProofs).WithOne().HasForeignKey(x => x.SelfBeliefId);
-
+                .Entity<SelfBelief>()
+                .HasMany(x => x.SelfBeliefProofs)
+                .WithOne()
+                .HasForeignKey(x => x.SelfBeliefId);
+            modelBuilder
+                .Entity<SelfBelief>()
+                .HasMany(x => x.UserAnswers)
+                .WithOne()
+                .HasForeignKey(x => x.SelfBeliefId);
 
         }
 

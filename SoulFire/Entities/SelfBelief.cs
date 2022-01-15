@@ -17,5 +17,8 @@ namespace SoulFire.Entities
         [ForeignKey("SelfBeliefId")]
         public virtual List<SelfBeliefProof> SelfBeliefProofs { get; set; }
 
+        [ForeignKey("SelfBeliefId")]
+        public virtual List<UserAnswer> UserAnswers { get; set; }
+
     }
 }

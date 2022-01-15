@@ -12,5 +12,6 @@ namespace SoulFire.Interfaces
         Task<SelfBelief> AddUserSelfBelief(SelfBelief selfBelief);
         Task<SelfBelief> UpdateUserSelfBelief(Guid beliefId, SelfBelief selfBelief);
         Task<SelfBelief> DeleteUserSelfBelief(Guid beliefId);
+        Task<SelfBeliefProof> AddBeliefProof(SelfBeliefProof proof);
     }
 }

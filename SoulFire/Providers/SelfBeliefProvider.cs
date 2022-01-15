@@ -17,6 +17,15 @@ namespace SoulFire.Providers
             this.context = context;
         }
 
+        public async Task<SelfBeliefProof> AddBeliefProof(SelfBeliefProof proof)
+        {
+            proof.Id = new Guid();
+            context.SelfBeliefProofs.Add(proof);
+            await context.SaveChangesAsync();
+            return proof;
+
+        }
+
         public async Task<SelfBelief> AddUserSelfBelief(SelfBelief selfBelief)
         {
             selfBelief.Id = new Guid();

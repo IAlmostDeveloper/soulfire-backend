@@ -48,5 +48,12 @@ namespace SoulFire.Controllers
         {
             return Ok(new { status = 200, content = selfBeliefProvider.DeleteUserSelfBelief (noteId).Result });
         }
+
+        [HttpPost]
+        [Route("{noteId}")]
+        public ActionResult AddBeliefProof(Guid noteId, [FromBody] SelfBeliefProof proof)
+        {
+            return Ok(new { status = 200, content = selfBeliefProvider.AddBeliefProof(proof).Result });
+        }
     }
 }

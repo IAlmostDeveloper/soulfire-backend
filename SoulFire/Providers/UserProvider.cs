@@ -39,7 +39,7 @@ namespace SoulFire.Providers
 
         public IEnumerable<UserAnswer> GetUserAnswers(Guid userId)
         {
-            return context.UserAnswers.Where(x => x.UserId == userId);
+            return context.UserAnswers.Where(x => x.SelfBeliefId == userId);
         }
 
         public UserAnswer GetUserAnswer(Guid answerId)
@@ -51,7 +51,7 @@ namespace SoulFire.Providers
         {
             var userAnswer = new UserAnswer
             {
-                UserId = userId,
+                SelfBeliefId = userId,
                 Question = question,
                 Answer = answer
             };
