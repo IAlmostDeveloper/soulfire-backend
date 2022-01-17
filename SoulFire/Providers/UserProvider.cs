@@ -17,6 +17,11 @@ namespace SoulFire.Providers
             this.context = context;
         }
 
+        public User GetUserStatistics(Guid userId)
+        {
+            return context.Users.FirstOrDefault(x => x.Id == userId);
+        }
+
         public IEnumerable<UserAchievement> GetUserAchievements(Guid UserId)
         {
             var userAchievements = context.UserAchievements

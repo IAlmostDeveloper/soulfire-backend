@@ -11,6 +11,7 @@ namespace SoulFire.Interfaces
         IEnumerable<UserAchievement> GetUserAchievements(Guid UserId);
         Task<UserAchievement> AddUserAchievement(UserAchievement userAchievement);
         IEnumerable<UserAnswer> GetAllAnswers();
+        User GetUserStatistics(Guid userId);
         IEnumerable<UserAnswer> GetUserAnswers(Guid userId);
         UserAnswer GetUserAnswer(Guid answerId);
         Task<UserAnswer> AddUserAnswer(Guid userId, string question, string answer);

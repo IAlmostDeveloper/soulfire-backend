@@ -30,6 +30,13 @@ namespace SoulFire.Controllers
             return Ok(new { status = 200, userAchievements = userProvider.GetUserAchievements(userId) });
         }
 
+        [HttpGet]
+        [Route("statistics/{userId}")]
+        public ActionResult GetUserStatistics(Guid userId)
+        {
+            return Ok(new { status = 200, result = userProvider.GetUserStatistics(userId) });
+        }
+
         [HttpPost]
         [Route("achievements")]
         public ActionResult AddUserAchievement([FromBody] UserAchievement userAchievement)
