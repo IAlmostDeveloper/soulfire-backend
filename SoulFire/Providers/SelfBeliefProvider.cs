@@ -56,8 +56,10 @@ namespace SoulFire.Providers
         public async Task<SelfBelief> UpdateUserSelfBelief(Guid beliefId, SelfBelief selfBelief)
         {
             var sBelief = context.SelfBeliefs.FirstOrDefault(x => x.Id == beliefId);
-            sBelief.Title = selfBelief.Title;
-            sBelief.Content = selfBelief.Content;
+            sBelief.OldSelfBelief = selfBelief.OldSelfBelief;
+            sBelief.OldSelfBeliefRule = selfBelief.OldSelfBeliefRule;
+            sBelief.NewSelfBelief = selfBelief.NewSelfBelief;
+            sBelief.NewSelfBeliefRule = selfBelief.NewSelfBeliefRule;
             if (sBelief.SelfBeliefProofs != null && sBelief.SelfBeliefProofs.Count != selfBelief.SelfBeliefProofs.Count)
             {
                 sBelief.SelfBeliefProofs.Clear();

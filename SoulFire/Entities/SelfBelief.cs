@@ -11,8 +11,10 @@ namespace SoulFire.Entities
     {
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
-        public string Title { get; set; }
-        public string Content { get; set; }
+        public string OldSelfBeliefRule { get; set; }
+        public string OldSelfBelief { get; set; }
+        public string NewSelfBeliefRule { get; set; }
+        public string NewSelfBelief { get; set; }
 
         [ForeignKey("SelfBeliefId")]
         public virtual List<SelfBeliefProof> SelfBeliefProofs { get; set; }
