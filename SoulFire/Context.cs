@@ -19,7 +19,8 @@ namespace SoulFire
         public virtual DbSet<Preset> Presets { get; set; }
         public virtual DbSet<SelfBelief> SelfBeliefs { get; set; }
         public virtual DbSet<SelfBeliefProof> SelfBeliefProofs { get; set; }
-
+        public virtual DbSet<DiaryNoteHelp> DiaryNoteHelps { get; set; }
+        public virtual DbSet<SelfBeliefHelp> SelfBeliefHelps { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder
@@ -38,7 +39,7 @@ namespace SoulFire
         public Context(DbContextOptions<Context> options)
             : base(options)
         {
-            
+
         }
     }
 }

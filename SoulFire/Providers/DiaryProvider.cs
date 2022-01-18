@@ -33,6 +33,11 @@ namespace SoulFire.Providers
             return diaryNote;
         }
 
+        public IEnumerable<DiaryNoteHelp> GetDiaryNotesHelp()
+        {
+            return context.DiaryNoteHelps;
+        }
+
         public IEnumerable<DiaryNote> GetUserDiaryNotes(Guid userId)
         {
             return context.DiaryNotes.Where(x => x.UserId == userId).OrderByDescending(x => x.UpdatedDate);

@@ -29,6 +29,13 @@ namespace SoulFire.Controllers
             return Ok(new { status = 200, content = diaryProvider.GetUserDiaryNotes(userId) });
         }
 
+        [HttpGet]
+        [Route("help")]
+        public ActionResult GetDiaryNotesHelp()
+        {
+            return Ok(new { status = 200, content = diaryProvider.GetDiaryNotesHelp() });
+        }
+
         [HttpPost]
         public ActionResult AddDiaryNote([FromBody] DiaryNote diaryNote)
         {

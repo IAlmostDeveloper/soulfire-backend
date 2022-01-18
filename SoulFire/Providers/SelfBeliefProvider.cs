@@ -44,6 +44,11 @@ namespace SoulFire.Providers
             return selfBelief;
         }
 
+        public IEnumerable<SelfBeliefHelp> GetSelfBeliefsHelp()
+        {
+            return context.SelfBeliefHelps;
+        }
+
         public IEnumerable<SelfBelief> GetUserSelfBeliefs(Guid userId)
         {
             var beliefs =  context.SelfBeliefs

@@ -29,6 +29,13 @@ namespace SoulFire.Controllers
             return Ok(new { status = 200, content = selfBeliefProvider.GetUserSelfBeliefs(userId) });
         }
 
+        [HttpGet]
+        [Route("help")]
+        public ActionResult GetSelfBeliefsHelp()
+        {
+            return Ok(new { status = 200, content = selfBeliefProvider.GetSelfBeliefsHelp() });
+        }
+
         [HttpPost]
         public ActionResult AddUserSelfBelief([FromBody] SelfBelief preset)
         {
