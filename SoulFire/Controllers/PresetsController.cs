@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SoulFire.Entities;
+using SoulFire.Core.Entities;
 using SoulFire.Interfaces;
 using System;
 using System.Collections.Generic;

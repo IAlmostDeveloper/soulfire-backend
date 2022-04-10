@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using SoulFire.Entities;
+using SoulFire.Core.Entities;
 using SoulFire.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -22,13 +22,11 @@ namespace SoulFire.Controllers
     public class AuthController : ControllerBase
     {
         private IConfiguration config;
-        private readonly Context context;
         private readonly IAuthProvider authProvider;
 
-        public AuthController(IConfiguration config, Context context, IAuthProvider authProvider)
+        public AuthController(IConfiguration config, IAuthProvider authProvider)
         {
             this.config = config;
-            this.context = context;
             this.authProvider = authProvider;
         }
 
